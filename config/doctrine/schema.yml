@@ -1,0 +1,10 @@
+Page:
+  actAs: 
+    Timestampable: ~
+  columns:
+    id:       { type: integer(4), primary: true, autoincrement: true }
+    name:     { type: string(255), notnull: true }
+    slug:     { type: string(255) }
+    pic:      { type: string(255) }
+    content:  { type: clob, notnull: true }
+    
