@@ -8,3 +8,11 @@ Page:
     pic:      { type: string(255) }
     content:  { type: clob, notnull: true }
     
+News:
+  actAs:
+    Timestampable: ~
+  columns:
+    id:       { type: integer(4), primary: true, autoincrement: true }
+    title:    { type: string(255), notnull: true }
+    content:  { type: string(255), notnull: true }
+    is_enabled: { type: boolean }
