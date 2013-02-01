@@ -21,10 +21,4 @@ class pageActions extends sfActions
     $this->page = Doctrine::getTable('Page')->findOneBy('slug', $request->getParameter('slug', null));
     $this->forward404Unless($this->page);
   }
-
-  public function executeFeedback(sfWebRequest $request)
-  {
-    $this->page = Doctrine::getTable('Page')->findOneBySlug('feedback') ;// get from db;
-    $this->forward404Unless($this->page);
-  }
 }

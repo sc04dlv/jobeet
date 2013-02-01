@@ -1,5 +1,5 @@
 <h1>
-  feedback
+  Welcome
 </h1>
 
 <h2><?php echo $page->getName() ?></h2>

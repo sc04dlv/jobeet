@@ -11,20 +11,42 @@ page-show:
   url:   /page/:slug
   param: { module: page, action: show }
 
-# default rules
 homepage:
   url:   /
   param: { module: main, action: home }
 
-feedback:
-   url: /feedback
-   param: { module: page, action: feedback, slug: feedback }
+feedback_new:
+  url: /feedback/new
+  param: { module: feedback, action: new }
+  requirements:
+    sf_method: [get]
+
+feedback_create:
+  url: /feedback/create
+  param: { module: feedback, action: create }
+  requirements:
+    sf_method: [post]
+
+feedback_success:
+  url: /feedback/success
+  param: { module: feedback, action: success }
+  requirements:
+    sf_method: [get]
+
+news:
+  url: /news
+  param: { module: news, action: index }
+
+news_view:
+  url: news_view/:id
+  param: { module: news, action: view }
+
 
 # generic rules
 # please, remove them by adding more specific rules
-default_index:
-  url:   /:module
-  param: { action: index }
+#default_index:
+#  url:   /:module
+#  param: { action: index }
 
 default:
   url:   /:module/:action/*

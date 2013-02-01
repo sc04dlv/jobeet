@@ -9,6 +9,12 @@
     <?php include_javascripts() ?>
   </head>
   <body>
+    <div style="border: 1px solid gray; padding: 10px 20px; margin-bottom: 20px;">
+      Adminko &asymp;
+      <?php echo link_to('Pages', '@page') ?> ::
+      <?php echo link_to('Feedbacks', '@feedback') ?> ::
+      <?php echo link_to('News', '@news') ?>
+    </div>
     <?php echo $sf_content ?>
   </body>
 </html>

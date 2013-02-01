@@ -20,8 +20,11 @@
             'slug' => 'contacts',
             )) ?>">Contacts</a></li>
 
-      <li class="<?php echo ($currentRouteName == 'feedback' ? 'active' : '')?>"><a
-          href="<?php echo url_for('@feedback') ?>">Feed Back</a></li>
+      <li class="<?php echo (strstr($currentRouteName, 'feedback') ? 'active' : '')?>"><a
+          href="<?php echo url_for('@feedback_new') ?>">Feed Back</a></li>
+
+      <li class="<?php echo (strstr($currentRouteName, 'news') ? 'active' : '')?>"><a
+          href="<?php echo url_for('@news') ?>">News</a></li>
 
     </ul>
 <form class="navbar-form pull-right">

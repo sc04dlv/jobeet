@@ -10,18 +10,18 @@
 </head>
 <body>
   <div class="container">
-    
+
     <div id="header" class="row">
-      <?php include_partial('main/common_header') ?>
+      <?php include_partial('global/common_header') ?>
     </div>
 
     <div id="body" class="row">
       <div class="span8">
         <?php echo $sf_content ?>
       </div>
-      
+
       <div class="span4">
-        
+
         <table class="table table-hover">
           <tr>
             <td>сыылка 1</td>
@@ -36,14 +36,14 @@
             <td>сыылка 1</td>
           </tr>
         </table>
-        
+
       </div>
 
     </div>
 
-  </div>  
+  </div>
   <footer class="footer">
-    <?php include_partial('main/footer') ?>
+    <?php include_partial('global/footer') ?>
   </footer>
 
 
