@@ -12,4 +12,15 @@
  */
 class Page extends BasePage
 {
+  /**
+   * return page name + formatted date
+   */
+  public function getPageNameWithDate()
+  {
+    return $this->get('name').', from: '.date_format(new DateTime($this->get('updated_at')), 'd.m.Y');
+  }
+  
+  // Andy Johnson, AKA "Buss" 
+  // function getFullName()
+  
 }

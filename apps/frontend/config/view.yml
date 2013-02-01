@@ -6,15 +6,21 @@ default:
     content-type: text/html
 
   metas:
-    #title:        symfony project
+    title:        my project
     #description:  symfony project
     #keywords:     symfony, project
     #language:     en
     #robots:       index, follow
 
-  stylesheets:    [main.css]
+  stylesheets:
+#    - style.css
+   - bootstrap/bootstrap.min.css
+   - bootstrap/docs.css
+   - tuning.css
 
-  javascripts:    []
+  javascripts:
+    - http://code.jquery.com/jquery-latest.js
+    - bootstrap/bootstrap.min.js
 
   has_layout:     true
   layout:         layout

@@ -24,7 +24,5 @@ class mainActions extends sfActions
   {
     $this->page = Doctrine::getTable('Page')->findOneBySlug('welcome') ;// get from db;
     $this->forward404Unless($this->page);
-//    $this->page = Doctrine::getTable('Page')->findOneBy('slug', 'welcome') ;// get from db;
-    
   }
 }

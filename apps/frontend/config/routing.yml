@@ -1,10 +1,24 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
+
+page-about-us:
+  url:   /about-us
+  param: { module: page, action: show, slug: about-us }
+
+
+page-show:
+  url:   /page/:slug
+  param: { module: page, action: show }
+
 # default rules
 homepage:
   url:   /
   param: { module: main, action: home }
+
+feedback:
+   url: /feedback
+   param: { module: page, action: feedback, slug: feedback }
 
 # generic rules
 # please, remove them by adding more specific rules
