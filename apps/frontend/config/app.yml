@@ -2,4 +2,11 @@
 # http://www.symfony-project.org/reference/1_4/en/11-App
 
 # default values
-#all:
+all:
+  sf_captchagd:
+#    image_width:                100 # image width in pixels
+#    image_height:               30 # image height in pixels
+#    chars:                      "123456789" # possible chars in captcha
+#    length:                     4 # length of captcha
+#    font_size:                  18 # font size
+    force_new_captcha:          true

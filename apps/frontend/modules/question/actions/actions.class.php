@@ -24,7 +24,7 @@ class questionActions extends sfActions
 
   public function executeCreate(sfWebRequest $request)
   {
-    $this->redirectUnless($request->isMethod(sfRequest::POST), 'question');
+    $this->redirectUnless($request->isMethod(sfRequest::POST), '@question');
     $this->form = new UserQuestionForm();
 //    $this->form->getObject() == new Question();
 //    $this->form->getObject()->setQuestion($request->getParameter('question')['question']);
@@ -36,9 +36,13 @@ class questionActions extends sfActions
       // save
       $record = $this->form->save();
       $this->redirect('@question_success');
-    } else {
-      $this->forward('question', 'index');
-      // DO nothing, warn user and show form
+    }
+    else
+    {
+      $this->questions = QuestionTable::getInstance()->findAll();
+
+      $this->getUser()->setFlash('error', 'Возникли ошибки!!!');
+      $this->setTemplate('index');
     }
   }
 

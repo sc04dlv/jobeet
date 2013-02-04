@@ -14,5 +14,8 @@ class UserQuestionForm extends QuestionForm
   {
     parent::configure();
     unset($this['answer']);
+
+    $this->setWidget('captcha', new sfWidgetCaptchaGD());
+    $this->setValidator('captcha', new sfCaptchaGDValidator(array('length' => 4)));
   }
 }

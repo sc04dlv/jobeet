@@ -14,8 +14,9 @@ generator:
     config:
       actions: ~
       fields:  ~
-      list:    
+      list:
         hide: [content]
+        batch_actions: {}
       filter:  ~
       form:
         display:
