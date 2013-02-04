@@ -41,6 +41,20 @@ news_view:
   url: news_view/:id
   param: { module: news, action: view }
 
+question:
+  url: /question
+  param: { module: question, action: index }
+
+question_create:
+  url: /question/create
+  param: { module: question, action: create }
+
+question_success:
+  url: /question/success
+  param: { module: question, action: success }
+
+
+
 
 # generic rules
 # please, remove them by adding more specific rules

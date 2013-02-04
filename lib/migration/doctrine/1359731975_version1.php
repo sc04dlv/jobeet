@@ -6,12 +6,12 @@ class Version1 extends Doctrine_Migration_Base
 {
     public function up()
     {
-        $this->removeColumn('news', 'is_enabled');
+        $this->addColumn('news', 'is_enabled', 'boolean', '25', array(
+             ));
     }
 
     public function down()
     {
-        $this->addColumn('news', 'is_enabled', 'boolean', '25', array(
-             ));
+        $this->removeColumn('news', 'is_enabled');
     }
 }

@@ -30,6 +30,6 @@ Question:
   actAs:
     Timestampable: ~
   columns:
-     id:      { type: integer(4), primary: true, autoicriment: true }
-     question:  { type: string(255), notnull: true }
-     answer:  { type: string(255) }
+    id:       { type: integer(4), primary: true, autoincrement: true }
+    question:  { type: string(255), notnull: true }
+    answer:  { type: string(255) }

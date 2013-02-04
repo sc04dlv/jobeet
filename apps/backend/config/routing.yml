@@ -1,3 +1,12 @@
+question:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Question
+    module:               question
+    prefix_path:          /question
+    column:               id
+    with_wildcard_routes: true
+
 feedback:
   class: sfDoctrineRouteCollection
   options:

@@ -32,6 +32,8 @@ class feedbackActions extends sfActions
       $record = $this->form->save();
       $this->redirect('@feedback_success');
     } else {
+      $this->getUser()->setFlash('error', 'Возникли ошибки!!!');
+      $this->setTemplate('new');
       // DO nothing, warn user and show form
     }
   }

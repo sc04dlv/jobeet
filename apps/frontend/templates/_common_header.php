@@ -26,6 +26,10 @@
       <li class="<?php echo (strstr($currentRouteName, 'news') ? 'active' : '')?>"><a
           href="<?php echo url_for('@news') ?>">News</a></li>
 
+      <li class="<?php echo (strstr($currentRouteName, 'question') ? 'active' : '')?>"><a
+          href="<?php echo url_for('@question') ?>">Question</a></li>
+
+
     </ul>
 <form class="navbar-form pull-right">
   <input type="text" class="span2">
