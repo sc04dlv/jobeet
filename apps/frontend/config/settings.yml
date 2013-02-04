@@ -24,6 +24,7 @@ test:
 
 all:
   .settings:
+    culture:                ru_RU
     # Form security secret (CSRF protection)
     csrf_secret:            305adc4b8ed15cedeaf4c37b304525243694b9cc
 
@@ -34,5 +35,11 @@ all:
     # Enable the database manager
     use_database:           true
 
-    enabled_modules:      [default, sfGuardAuth, sfCaptchaGD]
+    login_module:           sfGuardAuth
+    login_action:           signin
+
+    secure_module:          sfGuardAuth
+    secure_action:          secure
+
+    enabled_modules:      [default, sfGuardAuth, sfCaptchaGD] #
     standard_helpers:     [Partial, Cache, I18N]

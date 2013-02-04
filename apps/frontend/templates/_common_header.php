@@ -29,6 +29,14 @@
       <li class="<?php echo (strstr($currentRouteName, 'question') ? 'active' : '')?>"><a
           href="<?php echo url_for('@question') ?>">Question</a></li>
 
+          <li>
+            <?php if (!$sf_user->isAuthenticated()): ?>
+              <?php echo link_to('auth', '@sf_guard_signin') ?>
+            <?php else: ?>
+              <?php echo link_to('logoff', '@sf_guard_signout') ?>
+            <?php endif; // (!$sf_user->isAuthenticated()): ?>
+          </li>
+
 
     </ul>
 <form class="navbar-form pull-right">

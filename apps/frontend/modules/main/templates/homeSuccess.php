@@ -2,6 +2,8 @@
   Welcome
 </h1>
 
-<h2><?php echo $page->getName() ?></h2>
+<?php if ($page): ?>
+  <h2><?php echo $page->getName() ?></h2>
 
-<?php echo $page->getContent() ?>
+  <?php echo $page->getContent() ?>
+<?php endif; ?>

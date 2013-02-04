@@ -17,12 +17,10 @@ class mainActions extends sfActions
   */
   public function executeIndex(sfWebRequest $request)
   {
-    $this->forward('default', 'module');
   }
 
   public function executeHome(sfWebRequest $request)
   {
     $this->page = Doctrine::getTable('Page')->findOneBySlug('welcome') ;// get from db;
-    $this->forward404Unless($this->page);
   }
 }
