@@ -14,9 +14,9 @@
       <?php echo link_to('Pages', '@page') ?> ::
       <?php echo link_to('Feedbacks', '@feedback') ?> ::
       <?php echo link_to('News', '@news') ?> ::
-      <?php echo link_to('Question', '@question') ?>
-      <?php echo link_to('Users', 'sfGuardUser/index') ?>
-      <?php echo link_to('Permissions', 'sfGuardPermission/index') ?>
+      <?php echo link_to('Question', '@question') ?> ::
+      <?php echo link_to('Users', '@sf_guard_user') ?> ::
+      <?php echo link_to('Permissions', '@sf_guard_permission') ?>
     </div>
     <?php echo $sf_content ?>
   </body>

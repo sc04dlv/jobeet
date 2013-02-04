@@ -25,12 +25,14 @@
     <?php echo $form ?>
     <input type="submit" value="ok">
   </form>
-<?php else: ?>
-    <?php if (!$sf_user->isAuthenticated()): ?>
-      <?php echo 'auth before' ?>
-    <?php elseif (!$sf_user->hasCredential('can-question')): ?>
-      <?php echo 'нет прав для размещения вопроса' ?>
-    <?php endif; ?>
-<?php endif; ?>
+<?php
+  else:
+    if (!$sf_user->isAuthenticated()):
+      echo 'auth before';
+    elseif (!$sf_user->hasCredential('can-question')):
+      echo 'нет прав для размещения вопроса';
+    endif;
+  endif;
+?>
 
 
