@@ -10,10 +10,8 @@
   </form>
 
 
-<?php else: ?>
-
-You must
-<a href="<?php echo url_for('@user_auto_auth') ?>">auth</a> or
-<a href="">register </a>
-before.
-<?php endif; ?>
+<?php // elseif (!$sf_user->hasCredential('can-feedback')):
+//    echo ('you has not anought privileges');
+  else:
+    include_partial('global/auth_or_register');
+  endif; ?>

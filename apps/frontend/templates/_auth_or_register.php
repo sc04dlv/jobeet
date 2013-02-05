@@ -1,4 +1,4 @@
 You must
-<a href="<?php echo url_for('@user_auto_auth') ?>">auth</a> or
-<a href="">register </a>
+<a href="<?php echo url_for('@sf_guard_signin') ?>">auth</a> or
+<a href="<?php echo url_for('@sf_guard_register') ?>">register </a>
 before.

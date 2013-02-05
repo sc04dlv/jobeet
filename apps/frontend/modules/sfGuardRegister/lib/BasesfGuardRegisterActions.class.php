@@ -10,7 +10,7 @@ class BasesfGuardRegisterActions extends sfActions
       $this->redirect('@homepage');
     }
 
-    $this->form = new sfGuardRegisterForm();
+    $this->form = new RegisterForm();
 
     if ($request->isMethod('post'))
     {

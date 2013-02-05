@@ -28,7 +28,7 @@
 <?php
   else:
     if (!$sf_user->isAuthenticated()):
-      echo 'auth before';
+      include_partial('global/auth_or_register');
     elseif (!$sf_user->hasCredential('can-question')):
       echo 'нет прав для размещения вопроса';
     endif;

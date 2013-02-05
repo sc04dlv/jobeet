@@ -1,6 +1,11 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
+
+sf_guard_register:
+  url:  /register
+  param: { module: sfGuardRegister, action: index}
+
 sf_guard_signin:
   url:   /login
   param: { module: sfGuardAuth, action: signin }
@@ -13,14 +18,13 @@ sf_guard_password:
   url:   /request_password
   param: { module: sfGuardAuth, action: password }
 
-
-user_auto_auth:
-  url:   /user/auth
-  param: { module: user, action: autoAuth }
-
-user_logoff:
-  url:   /user/logoff
-  param: { module: user, action: logoff }
+#user_auto_auth:
+#  url:   /user/auth
+#  param: { module: user, action: autoAuth }
+#
+#user_logoff:
+#  url:   /user/logoff
+#  param: { module: user, action: logoff }
 
 page-about-us:
   url:   /about-us
@@ -30,10 +34,6 @@ page-about-us:
 page-show:
   url:   /page/:slug
   param: { module: page, action: show }
-
-homepage:
-  url:   /
-  param: { module: main, action: home }
 
 feedback_new:
   url: /feedback/new
@@ -73,8 +73,9 @@ question_success:
   url: /question/success
   param: { module: question, action: success }
 
-
-
+homepage:
+  url:   /
+  param: { module: main, action: home }
 
 # generic rules
 # please, remove them by adding more specific rules
