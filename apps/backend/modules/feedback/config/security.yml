@@ -1,0 +1,8 @@
+new:
+  credentials: [admin]
+delete:
+  credentials: [admin]
+edit:
+  credentials: [[admin, moderator]]
+index:
+  credentials: [[admin, moderator, editor]]
