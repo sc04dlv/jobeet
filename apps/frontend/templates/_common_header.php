@@ -30,7 +30,7 @@
           href="<?php echo url_for('@question') ?>">Question</a></li>
 
       <li class="<?php echo (strstr($currentRouteName, 'blog') ? 'active' : '')?>"><a
-          href="<?php echo url_for('@blog') ?>">Blog</a></li>
+          href="<?php echo url_for('@blog_posts') ?>">Blog</a></li>
 
       <li>
         <?php if (!$sf_user->isAuthenticated()): ?>

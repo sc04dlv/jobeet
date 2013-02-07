@@ -6,11 +6,14 @@
     <tr>
     </tr>
     <tr>
-      <?php foreach ($blogs as $blog): ?>
-  <h3><a href="<?php echo url_for('@blog_comment') ?>"> <?php echo $blog->getTitle() ?></a></h3>
-        <p><?php echo $blog->getContent(ESC_RAW) ?></p>
-        <small><?php echo $blog->getAuthor()->__toString() ?>
-          <i><?php echo $blog->getCreatedAt() ?></i>
+      <?php foreach ($posts as $post): ?>
+  <h3><a href="<?php echo url_for(array(
+          'sf_route'    => 'blog_view',
+          'id'          => $post->id
+        )) ?>"> <?php echo $post->getTitle() ?></a></h3>
+        <p><?php echo $post->getContent(ESC_RAW) ?></p>
+        <small><?php echo $post->getAuthor()->__toString() ?>
+          <i><?php echo $post->getCreatedAt() ?></i>
         </small>
         <hr />
       <?php endforeach; ?>

@@ -1,7 +1,7 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
-blog:
+blog_posts:
   url: /blog
   param:  { module: blog, action: index }
 
@@ -11,9 +11,17 @@ blogpost_create:
   requirements:
     sf_method: [post]
 
-blog_comment:
-  url: /blog/comment
-  param: {module: blog, action: comment }
+blog_view:
+  url: /blog/:id
+  param: { module: blog, action: view }
+  requirements:
+    id: \d+
+
+blog_comment_create:
+  url: /blog/comment_create
+  param: { module: blog, action: commentCreate }
+  requirements:
+    sf_method: [post]
 
 sf_guard_register:
   url:  /register

@@ -1,10 +1,10 @@
 <?php
 
 /**
- * blog actions.
+ * post actions.
  *
  * @package    jobeet
- * @subpackage blog
+ * @subpackage post
  * @author     Your name here
  * @version    SVN: $Id: actions.class.php 23810 2009-11-12 11:07:44Z Kris.Wallsmith $
  */
@@ -17,12 +17,12 @@ class blogActions extends sfActions
   */
   public function executeIndex(sfWebRequest $request)
   {
-    $this->blogs = BlogPostTable::getInstance()->findAll();
+    $this->posts = BlogPostTable::getInstance()->findAll();
     $this->form = new BlogPostForm();
   }
 
   public function executeCreate(sfWebRequest $request) {
-    $this->redirectUnless($request->isMethod(sfRequest::POST), 'blog');
+    $this->redirectUnless($request->isMethod(sfRequest::POST), 'post');
     $this->form = new BlogPostForm();
     $this->form->bind($request->getParameter('blog_post'));
 
@@ -36,12 +36,41 @@ class blogActions extends sfActions
 //      print_r($rec->toArray());
 //      die();
       $record = $this->form->save();
-      $this->redirect('@blog');
+      $this->redirect('@blog_posts');
     } else {
       $this->getUser()->setFlash('error', 'Возникли ошибки!!!');
       $this->setTemplate('index');
     }
-    $this->blogs = BlogPostTable::getInstance()->findAll();
+    $this->posts = BlogPostTable::getInstance()->findAll();
 
+  }
+
+  public function executeView(sfWebRequest $request)
+  {
+    $this->post = BlogPostTable::getInstance()->findOneBy('id', $request->getParameter('id', null));
+//    $this->comments = BlogCommentTable::getInstance()->findAll();
+    $this->form = new BlogCommentForm();
+  }
+
+  public function executeCommentCreate(sfWebRequest $request)
+  {
+    $this->redirectUnless($request->isMethod(sfRequest::POST), 'post');
+    $this->form = new BlogCommentForm();
+    $this->form->bind($request->getParameter('blog_comment'));
+
+    if($this->form->isValid()) {
+//      die('valid');
+      //забить в форму поля id_comment, автора_коммента
+      $user_id = $this->getUser()->getGuardUser()->getId();
+      $this->form->getObject()->setAuthorId($user_id);
+
+//      $comment_id =
+
+      $record = $this->form->save();
+      $this->redirect('@blog_view?id='.$record->blog_post_id);
+    } else {
+      die('err');
+      $this->getUser()->setFlash('error', 'проверьте форму');
+    }
   }
 }
