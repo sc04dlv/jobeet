@@ -15,12 +15,18 @@
  * @property boolean $is_active
  * @property boolean $is_super_admin
  * @property timestamp $last_login
+ * @property string $network
+ * @property string $identity
+ * @property string $uid
+ * @property string $profile
  * @property Doctrine_Collection $Groups
  * @property Doctrine_Collection $Permissions
  * @property Doctrine_Collection $sfGuardUserPermission
  * @property Doctrine_Collection $sfGuardUserGroup
  * @property sfGuardRememberKey $RememberKeys
  * @property sfGuardForgotPassword $ForgotPassword
+ * @property Doctrine_Collection $myBlogPosts
+ * @property Doctrine_Collection $myBlogComments
  * 
  * @method string                getFirstName()             Returns the current record's "first_name" value
  * @method string                getLastName()              Returns the current record's "last_name" value
@@ -32,12 +38,18 @@
  * @method boolean               getIsActive()              Returns the current record's "is_active" value
  * @method boolean               getIsSuperAdmin()          Returns the current record's "is_super_admin" value
  * @method timestamp             getLastLogin()             Returns the current record's "last_login" value
+ * @method string                getNetwork()               Returns the current record's "network" value
+ * @method string                getIdentity()              Returns the current record's "identity" value
+ * @method string                getUid()                   Returns the current record's "uid" value
+ * @method string                getProfile()               Returns the current record's "profile" value
  * @method Doctrine_Collection   getGroups()                Returns the current record's "Groups" collection
  * @method Doctrine_Collection   getPermissions()           Returns the current record's "Permissions" collection
  * @method Doctrine_Collection   getSfGuardUserPermission() Returns the current record's "sfGuardUserPermission" collection
  * @method Doctrine_Collection   getSfGuardUserGroup()      Returns the current record's "sfGuardUserGroup" collection
  * @method sfGuardRememberKey    getRememberKeys()          Returns the current record's "RememberKeys" value
  * @method sfGuardForgotPassword getForgotPassword()        Returns the current record's "ForgotPassword" value
+ * @method Doctrine_Collection   getMyBlogPosts()           Returns the current record's "myBlogPosts" collection
+ * @method Doctrine_Collection   getMyBlogComments()        Returns the current record's "myBlogComments" collection
  * @method sfGuardUser           setFirstName()             Sets the current record's "first_name" value
  * @method sfGuardUser           setLastName()              Sets the current record's "last_name" value
  * @method sfGuardUser           setEmailAddress()          Sets the current record's "email_address" value
@@ -48,12 +60,18 @@
  * @method sfGuardUser           setIsActive()              Sets the current record's "is_active" value
  * @method sfGuardUser           setIsSuperAdmin()          Sets the current record's "is_super_admin" value
  * @method sfGuardUser           setLastLogin()             Sets the current record's "last_login" value
+ * @method sfGuardUser           setNetwork()               Sets the current record's "network" value
+ * @method sfGuardUser           setIdentity()              Sets the current record's "identity" value
+ * @method sfGuardUser           setUid()                   Sets the current record's "uid" value
+ * @method sfGuardUser           setProfile()               Sets the current record's "profile" value
  * @method sfGuardUser           setGroups()                Sets the current record's "Groups" collection
  * @method sfGuardUser           setPermissions()           Sets the current record's "Permissions" collection
  * @method sfGuardUser           setSfGuardUserPermission() Sets the current record's "sfGuardUserPermission" collection
  * @method sfGuardUser           setSfGuardUserGroup()      Sets the current record's "sfGuardUserGroup" collection
  * @method sfGuardUser           setRememberKeys()          Sets the current record's "RememberKeys" value
  * @method sfGuardUser           setForgotPassword()        Sets the current record's "ForgotPassword" value
+ * @method sfGuardUser           setMyBlogPosts()           Sets the current record's "myBlogPosts" collection
+ * @method sfGuardUser           setMyBlogComments()        Sets the current record's "myBlogComments" collection
  * 
  * @package    jobeet
  * @subpackage model
@@ -110,6 +128,22 @@ abstract class BasesfGuardUser extends sfDoctrineRecord
         $this->hasColumn('last_login', 'timestamp', null, array(
              'type' => 'timestamp',
              ));
+        $this->hasColumn('network', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+        $this->hasColumn('identity', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+        $this->hasColumn('uid', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
+        $this->hasColumn('profile', 'string', 255, array(
+             'type' => 'string',
+             'length' => 255,
+             ));
 
 
         $this->index('is_active_idx', array(
@@ -148,6 +182,14 @@ abstract class BasesfGuardUser extends sfDoctrineRecord
         $this->hasOne('sfGuardForgotPassword as ForgotPassword', array(
              'local' => 'id',
              'foreign' => 'user_id'));
+
+        $this->hasMany('BlogPost as myBlogPosts', array(
+             'local' => 'id',
+             'foreign' => 'author_id'));
+
+        $this->hasMany('BlogComment as myBlogComments', array(
+             'local' => 'id',
+             'foreign' => 'author_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable(array(
              ));

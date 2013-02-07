@@ -1,3 +1,90 @@
+BlogPost:
+  actAs:
+    Timestampable: ~
+  columns:
+    id:           { type: integer(4), primary: true, autoincrement: true }
+    author_id:    { type: integer, notnull: true }
+    title:        { type: string(255), notnull: true }
+    content:      { type: string(255), notnull: true }
+  relations:
+    Author:
+      class:      sfGuardUser
+      local:      author_id
+      foreign:    id
+      foreignAlias: myBlogPosts
+
+BlogComment:
+  actAs:
+    Timestampable: ~
+  columns:
+    id:           { type: integer(4), primary: true, autoincrement: true }
+    blog_post_id: { type: integer(4), notnull: true }
+    author_id:    { type: integer, notnull: true }
+    content:      { type: string(255), notnull: true }
+  relations:
+    Author:
+      class:      sfGuardUser
+      local:      author_id
+      foreign:    id
+      foreignAlias: myBlogComments
+    BlogPost:
+      class:      BlogPost
+      local:      blog_post_id
+      foreign:    id
+      foreignAlias: PostComments
+
+sfGuardUser:
+  actAs: [Timestampable]
+  columns:
+    first_name: string(255)
+    last_name: string(255)
+    email_address:
+      type: string(255)
+      notnull: true
+      unique: true
+    username:
+      type: string(128)
+      notnull: true
+      unique: true
+    algorithm:
+      type: string(128)
+      default: sha1
+      notnull: true
+    salt: string(128)
+    password: string(128)
+    is_active:
+      type: boolean
+      default: 1
+    is_super_admin:
+      type: boolean
+      default: false
+    last_login:
+      type: timestamp
+
+    # by leo
+    network:    { type: string(255) }
+    identity:   { type: string(255) }
+    uid:        { type: string(255) }
+    profile:    { type: string(255) }
+
+  indexes:
+    is_active_idx:
+      fields: [is_active]
+  relations:
+    Groups:
+      class: sfGuardGroup
+      local: user_id
+      foreign: group_id
+      refClass: sfGuardUserGroup
+      foreignAlias: Users
+    Permissions:
+      class: sfGuardPermission
+      local: user_id
+      foreign: permission_id
+      refClass: sfGuardUserPermission
+      foreignAlias: Users
+
+
 Page:
   actAs:
     Timestampable: ~
@@ -33,3 +120,11 @@ Question:
     id:       { type: integer(4), primary: true, autoincrement: true }
     question:  { type: string(255), notnull: true }
     answer:  { type: string(255) }
+
+Partners:
+  actAs: { Timestampable: ~ }
+  columns:
+    url:       { type: string(255), notnull: true }
+    email:     { type: string(255), notnull: true, unique: true }
+    token:     { type: string(255), notnull: true }
+    is_active: { type: boolean, notnull: true, default: 0 }

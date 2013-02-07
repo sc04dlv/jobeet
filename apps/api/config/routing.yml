@@ -1,0 +1,28 @@
+# You can find more information about this file on the symfony website:
+# http://www.symfony-project.org/reference/1_4/en/10-Routing
+
+question_list:
+  url: /question/list
+  param: { module: question, action: index}
+  requirements:
+    sf_method: [get]
+
+question_create:
+  url: /question
+  param: { module: question, action: create}
+  requirements:
+    sf_method: [post]
+
+# default rules
+homepage:
+  url:   /
+  param: { module: default, action: index }
+
+# generic rules
+# please, remove them by adding more specific rules
+default_index:
+  url:   /:module
+  param: { action: index }
+
+default:
+  url:   /:module/:action/*

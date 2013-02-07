@@ -1,9 +1,9 @@
 <div class="navbar">
   <div class="navbar-inner">
-    <a class="brand" href="<?php echo url_for('@homepage') ?>">
-      <?php $currentRouteName = $sf_context->getInstance()->getRouting()->getCurrentRouteName() ?>
-      <?php echo $currentRouteName ?>
-    </a>
+<!--    <a class="brand" href="<?php // echo url_for('@homepage') ?>">
+      <?php // $currentRouteName = $sf_context->getInstance()->getRouting()->getCurrentRouteName() ?>
+      <?php // echo $currentRouteName ?>
+    </a>-->
     <ul class="nav">
       <li class="<?php echo ($currentRouteName == 'homepage' ? 'active' : '')?>"><a
           href="<?php echo url_for('@homepage') ?>">Home</a>
@@ -29,13 +29,16 @@
       <li class="<?php echo (strstr($currentRouteName, 'question') ? 'active' : '')?>"><a
           href="<?php echo url_for('@question') ?>">Question</a></li>
 
-          <li>
-            <?php if (!$sf_user->isAuthenticated()): ?>
-              <?php echo link_to('auth', '@sf_guard_signin') ?>
-            <?php else: ?>
-              <?php echo link_to('logoff', '@sf_guard_signout') ?>
-            <?php endif; // (!$sf_user->isAuthenticated()): ?>
-          </li>
+      <li class="<?php echo (strstr($currentRouteName, 'blog') ? 'active' : '')?>"><a
+          href="<?php echo url_for('@blog') ?>">Blog</a></li>
+
+      <li>
+        <?php if (!$sf_user->isAuthenticated()): ?>
+          <?php echo link_to('auth', '@sf_guard_signin') ?>
+        <?php else: ?>
+          <?php echo link_to('logoff', '@sf_guard_signout') ?>
+        <?php endif; // (!$sf_user->isAuthenticated()): ?>
+      </li>
 
 
     </ul>

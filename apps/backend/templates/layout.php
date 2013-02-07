@@ -9,7 +9,7 @@
   <?php include_javascripts() ?>
 </head>
 <body>
-  <?php if ($sf_user->isAuthenticated()): ?>
+  <?php // if ($sf_user->isAuthenticated()): ?>
     <div style="border: 1px solid gray; padding: 10px 20px; margin-bottom: 20px;">
       Adminko &asymp;
       <?php echo link_to('Pages', '@page') ?> ::
@@ -17,13 +17,16 @@
       <?php echo link_to('News', '@news') ?> ::
       <?php echo link_to('Question', '@question') ?> ::
       <?php echo link_to('Users', '@sf_guard_user') ?> ::
-      <?php echo link_to('Permissions', '@sf_guard_permission') ?>
+      <?php echo link_to('Permissions', '@sf_guard_permission') ?> ::
+      <?php echo link_to('Partners', '@partners') ?> ::
+      <?php echo link_to('BlogPost', '@blog_post') ?> ::
+      <?php echo link_to('BlogComment', '@blog_comment') ?>
       <span style='display: inline; float: right;'>
-        You have loged as <?php echo $sf_user->getGuardUser()->getUsername() ?>
+        You have loged as <?php // echo $sf_user->getGuardUser()->getUsername() ?>
         <?php echo link_to('Logoff', '@sf_guard_signout') ?>
       </span>
     </div>
-  <?php endif; ?>
+  <?php // endif; ?>
 
   <?php echo $sf_content ?>
 </body>

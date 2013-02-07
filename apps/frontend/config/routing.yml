@@ -1,10 +1,23 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
+blog:
+  url: /blog
+  param:  { module: blog, action: index }
+
+blogpost_create:
+  url: /blog/create
+  param: { module: blog, action: create }
+  requirements:
+    sf_method: [post]
+
+blog_comment:
+  url: /blog/comment
+  param: {module: blog, action: comment }
 
 sf_guard_register:
   url:  /register
-  param: { module: sfGuardRegister, action: index}
+  param: { module: sfGuardRegister, action: index }
 
 sf_guard_signin:
   url:   /login

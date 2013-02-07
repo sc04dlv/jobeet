@@ -1,3 +1,30 @@
+blog_comment:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                BlogComment
+    module:               blog_comment
+    prefix_path:          /blog_comment
+    column:               id
+    with_wildcard_routes: true
+
+blog_post:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                BlogPost
+    module:               blog_post
+    prefix_path:          /blog_post
+    column:               id
+    with_wildcard_routes: true
+
+partners:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                partners
+    module:               partners
+    prefix_path:          /partners
+    column:               id
+    with_wildcard_routes: true
+
 #sf_guard_signin:
 #  url:  /login
 #  param: { module: sfGuardAuth, action: signin }
