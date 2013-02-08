@@ -42,13 +42,11 @@ class blogActions extends sfActions
       $this->setTemplate('index');
     }
     $this->posts = BlogPostTable::getInstance()->findAll();
-
   }
 
   public function executeView(sfWebRequest $request)
   {
     $this->post = BlogPostTable::getInstance()->findOneBy('id', $request->getParameter('id', null));
-//    $this->comments = BlogCommentTable::getInstance()->findAll();
     $this->form = new BlogCommentForm();
   }
 
@@ -57,20 +55,20 @@ class blogActions extends sfActions
     $this->redirectUnless($request->isMethod(sfRequest::POST), 'post');
     $this->form = new BlogCommentForm();
     $this->form->bind($request->getParameter('blog_comment'));
-
+//    print_r($request->getParameter('blog_comment'));//die();
     if($this->form->isValid()) {
-//      die('valid');
-      //забить в форму поля id_comment, автора_коммента
       $user_id = $this->getUser()->getGuardUser()->getId();
       $this->form->getObject()->setAuthorId($user_id);
-
-//      $comment_id =
 
       $record = $this->form->save();
       $this->redirect('@blog_view?id='.$record->blog_post_id);
     } else {
-      die('err');
+//      die($request->getParameter('blog_comment')['blog_post_id']);
+//      $form_vals = $this->form->getValues();
+//      print_r($this->form->getObject()->toArray());
       $this->getUser()->setFlash('error', 'проверьте форму');
+      $this->setTemplate('view');
     }
+    $this->post = BlogPostTable::getInstance()->findOneBy('id', $request->getParameter('blog_comment')['blog_post_id']);
   }
 }
