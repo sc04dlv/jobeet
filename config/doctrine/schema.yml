@@ -1,3 +1,17 @@
+BlogPostImage:
+  actAs:
+    Timestampable: ~
+  columns:
+    id:           { type: integer(4), primary: true, autoincrement: true }
+    blog_post_id: { type: integer(4), notnull: true }
+    filename:     { type: string(255), notnull: true }
+  relations:
+    BlogPost:
+      class:      BlogPost
+      local:      blog_post_id
+      foreign:    id
+      foreignAlias: PostImages
+
 BlogPost:
   actAs:
     Timestampable: ~
@@ -15,6 +29,9 @@ BlogPost:
 
 BlogComment:
   actAs:
+    NestedSet:
+      hasManyRoots:   true
+      rootColumnName: root_id
     Timestampable: ~
   columns:
     id:           { type: integer(4), primary: true, autoincrement: true }

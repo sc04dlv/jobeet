@@ -13,5 +13,16 @@ class BlogPostForm extends BaseBlogPostForm
   public function configure()
   {
     unset($this['created_at'], $this['updated_at'], $this['author_id']);
+
+    for ($i = 1; $i <= 5; $i++)
+    {
+      $subForm = new BlogPostImageForm();
+
+      $this->embedForm('pic-'.$i, $subForm);
+    }
+
+
+
+
   }
 }

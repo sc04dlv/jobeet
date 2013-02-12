@@ -6,15 +6,14 @@
     </tr>
     <tr>
       <?php foreach ($posts as $post): ?>
-      <h3><a href="<?php echo url_for(array(
-          'sf_route'    => 'blog_view',
-          'id'          => $post->id
-      )) ?>"> <?php echo $post->getTitle() ?></a></h3>
-      <p><?php echo $post->getContent(ESC_RAW) ?></p>
-      <small><?php echo $post->getAuthor()->__toString() ?>
-        <i><?php echo $post->getCreatedAt() ?></i>
-      </small>
-      <hr />
+        <h3><a href="<?php echo url_for(array(
+            'sf_route'    => 'blog_view',
+            'id'          => $post->id
+        )) ?>"> <?php echo $post->getTitle() ?></a></h3>
+        <p><?php echo $post->getContent(ESC_RAW) ?></p>
+        <small><?php echo $post->getAuthor()->__toString() ?>
+          <i><?php echo $post->getCreatedAt() ?></i>
+        </small>
       <?php endforeach; ?>
     </tr>
   </tbody>
@@ -22,8 +21,10 @@
 
 <?php if ($sf_user->isAuthenticated()):?>
 <h2>Create new post</h2>
-<form method="post" action="<?php echo url_for('@blogpost_create') ?>">
+<form method="post" action="<?php echo url_for('@blogpost_create') ?>"
+      <?php $form->isMultipart() and print 'enctype="multipart/form-data" '?>>
   <?php echo $form ?>
+  <br />
   <input type="submit" value="ok" />
 </form>
 <?php else: ?>

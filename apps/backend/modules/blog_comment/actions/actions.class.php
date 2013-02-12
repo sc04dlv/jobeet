@@ -13,4 +13,7 @@ require_once dirname(__FILE__).'/../lib/blog_commentGeneratorHelper.class.php';
  */
 class blog_commentActions extends autoBlog_commentActions
 {
+  protected function addSortQuery($query){
+    $query->addOrderBy('root_id asc, lft asc');
+  }
 }

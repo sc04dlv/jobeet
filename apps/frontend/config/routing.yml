@@ -1,6 +1,10 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
+blog_comment_tree:
+  url: /blog/comment_tree
+  param: { module: blog, action: tree }
+
 blog_posts:
   url: /blog
   param:  { module: blog, action: index }

@@ -1,3 +1,16 @@
+blog_post_image:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                BlogPostImage
+    module:               blog_post_image
+    prefix_path:          /blog_post_image
+    column:               id
+    with_wildcard_routes: true
+
+blog_comment_tree:
+  url: /blog_comment_tree
+  param: { module: sfJqueryTreeDoctrineManager, action: getTree }
+
 blog_comment:
   class: sfDoctrineRouteCollection
   options:
