@@ -20,7 +20,8 @@
       <?php echo link_to('Permissions', '@sf_guard_permission') ?> ::
       <?php echo link_to('Partners', '@partners') ?> ::
       <?php echo link_to('BlogPost', '@blog_post') ?> ::
-      <?php echo link_to('BlogComment', '@blog_comment') ?>
+      <?php echo link_to('BlogComment', '@blog_comment') ?> ::
+      <?php echo link_to('BlogImage', '@blog_post_image') ?>
       <span style='display: inline; float: right;'>
         You have loged as <?php // echo $sf_user->getGuardUser()->getUsername() ?>
         <?php echo link_to('Logoff', '@sf_guard_signout') ?>

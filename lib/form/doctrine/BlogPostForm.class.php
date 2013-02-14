@@ -14,15 +14,45 @@ class BlogPostForm extends BaseBlogPostForm
   {
     unset($this['created_at'], $this['updated_at'], $this['author_id']);
 
-    for ($i = 1; $i <= 5; $i++)
+    $this->embedRelation('PostImages');
+
+//    $subForm = new sfForm();
+//    for ($i=0; $i<2; $i++)
+//    {
+//      $blogImage = new BlogPostImage();
+//      $blogImage->BlogPost = $this->getObject();
+//
+//      $form = new BlogPostImageForm($blogImage);
+//
+//      $subForm->embedForm($i, $form);
+//    }
+//    $this->embedForm('newPhotos', $subForm);
+
+//*****//
+
+    $form = new BlogImageCollectionForm(null, array(
+      'blog_post' => $this->getObject(),
+      'size'      => 2,
+    ));
+
+    $this->embedForm('newPhotos', $form);
+  }
+
+  public function saveEmbeddedForms($con = null, $forms = null)
+  {
+    if (null === $forms)
     {
-      $subForm = new BlogPostImageForm();
+      $images = $this->getValue('newPhotos');
 
-      $this->embedForm('pic-'.$i, $subForm);
+      $forms = $this->embeddedForms;
+      foreach ($this->embeddedForms['newPhotos'] as $index => $form)
+      {
+        if (!isset($images[$index]))
+        {
+          unset($forms['newPhotos'][$index]);
+        }
+      }
     }
-
-
-
-
+    return parent::saveEmbeddedForms($con, $forms);
   }
 }

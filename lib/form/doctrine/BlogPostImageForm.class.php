@@ -12,14 +12,23 @@ class BlogPostImageForm extends BaseBlogPostImageForm
 {
   public function configure()
   {
-    unset($this['created_at'], $this['updated_at'], $this['blog_post_id']);
+    unset($this['created_at'], $this['updated_at']);
 
-    $this->setWidget('filename', new sfWidgetFormInputFile());
+
+    $this->setWidget('blog_post_id', new sfWidgetFormInputHidden());
+
+    $this->setWidget('filename', new sfWidgetFormInputFileEditable(
+            array(
+                'file_src'  => $this->getObject()->isNew() ? '---' : '<a target="_blank" href="/uploads/'.$this->getObject()->getFilename().'">view pic</a>',
+            )
+    ));
+
     $this->setValidator('filename', new sfValidatorFile(
             array(
                 'path'              => sfConfig::get('sf_upload_dir'),
                 'max_size'          => 1024000,
                 'mime_categories'   => 'web_images',
+                'required' => false,
             ),
             array()
     ));

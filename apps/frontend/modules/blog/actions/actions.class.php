@@ -26,11 +26,11 @@ class blogActions extends sfActions
     $this->redirectUnless($request->isMethod(sfRequest::POST), 'post');
 
     $this->form = new BlogPostForm();
-
     $this->form->bind($request->getParameter('blog_post'), $request->getFiles('blog_post'));
-//print_r($request->getParameter('blog_post_image'));die();
+//  print_r($request->getParameter('blog_post_image'));die();
 
-    if($this->form->isValid() && $this->form_image->isValid()){
+    if($this->form->isValid()){
+//      die('error');
       // bind active user
       $user_id = $this->getUser()->getGuardUser()->getId();
       $this->form->getObject()->setAuthorId($user_id);

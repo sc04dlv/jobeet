@@ -4,7 +4,7 @@ BlogPostImage:
   columns:
     id:           { type: integer(4), primary: true, autoincrement: true }
     blog_post_id: { type: integer(4), notnull: true }
-    filename:     { type: string(255), notnull: true }
+    filename:     { type: string(255) }
   relations:
     BlogPost:
       class:      BlogPost
