@@ -24,6 +24,7 @@
             <?php echo link_to('BlogImage', '@blog_post_image') ?>
             <span style='display: inline; float: right;'>
                 You have loged as <?php echo link_to('Logoff', '@sf_guard_signout') ?>
+                <?php // echo  ?>
             </span>
         </div>
         <?php // endif; ?>
