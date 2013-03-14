@@ -42,9 +42,9 @@
 
 
     </ul>
-<form class="navbar-form pull-right">
-  <input type="text" class="span2">
-  <button type="submit" class="btn">Submit</button>
-</form>
-   </div>
+    <form class="navbar-form pull-right" action="<?php echo url_for('@search') ?>">
+      <input type="text" class="span2">
+      <button type="submit" class="btn">Search</button>
+    </form>
+  </div>
 </div>

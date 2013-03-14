@@ -16,20 +16,6 @@ class BlogPostForm extends BaseBlogPostForm
 
     $this->embedRelation('PostImages');
 
-//    $subForm = new sfForm();
-//    for ($i=0; $i<2; $i++)
-//    {
-//      $blogImage = new BlogPostImage();
-//      $blogImage->BlogPost = $this->getObject();
-//
-//      $form = new BlogPostImageForm($blogImage);
-//
-//      $subForm->embedForm($i, $form);
-//    }
-//    $this->embedForm('newPhotos', $subForm);
-
-//*****//
-
     $form = new BlogImageCollectionForm(null, array(
       'blog_post' => $this->getObject(),
       'size'      => 2,
